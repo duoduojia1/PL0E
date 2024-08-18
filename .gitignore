@@ -1,0 +1,4 @@
+pcc
+*.o
+.vscode/
+Test/
