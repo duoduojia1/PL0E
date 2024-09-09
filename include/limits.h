@@ -2,4 +2,6 @@
 #define _LIMITS_H
 #define MAXLINEBUF 4096
 #define MAXTOKSIZE 256
-#endif
+#define MAXSTRLEN 256
+#define MAXSTRBUF 4096
+#endif 

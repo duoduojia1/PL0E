@@ -1,13 +1,15 @@
 #include "scan.h"
+extern int nidcnt;
+extern void match(token_t expected);
+
 
 int main(){
     source=fopen("/home/duoduo/PL01/Test/test.txt","r");
-    
-    while(1){
-        token_t curr=gettok();
-        if(curr == ERROR ||curr == ENDFILE) break;
-        printf("%d,%s\n",curr,tokenbuf);
-    }
+    token_t tok = KW_PROCEDURE;
+    int z=3;
+    do{
+        match(tok);
+    }while(z--);
     fclose(source);
     return 0;
 }

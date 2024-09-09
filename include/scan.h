@@ -16,6 +16,7 @@ extern int bufsize;
 extern int readc(bool peek);
 extern void unreadc(void);
 extern token_t gettok(void);
+extern int toklineno;
 
 
 typedef enum _state_enum {

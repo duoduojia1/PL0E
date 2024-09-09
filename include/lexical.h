@@ -4,9 +4,9 @@
 typedef enum _token_enum {
     ENDFILE = 0, 
     ERROR = 1,
-    // Eey Word
+    // Key Word
     KW_ARRAY = 2,
-    KW_BGGIN = 3,
+    KW_BEGIN = 3,
     KW_CHAR = 4,
     KW_CONST = 5,
     KW_DO = 6,

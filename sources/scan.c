@@ -5,6 +5,7 @@ char linebuf[MAXLINEBUF];
 char tokenbuf[MAXTOKSIZE + 1];
 bool fileend = false;
 int bufsize=0;
+int toklineno;
 int readc(bool peek)
 {
 	if (colmno < bufsize) {
@@ -277,6 +278,7 @@ token_t gettok(void){
 		}
 		if(state == DONE){
 			tokenbuf[i]='\0';//可能save=0，但是直接done了，但是没有结束符。
+			toklineno = lineno;
 			if(curr == MC_ID){
 				curr = getkw(tokenbuf);
 			}
