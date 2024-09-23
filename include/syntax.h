@@ -42,7 +42,7 @@ struct _var_def_node{
 
 typedef enum _pf_dec_enum { FUN_PFDEC, PROC_PFDEC } pf_dec_t;
 
-struct _Pf_dec_list_node{
+struct _pf_dec_list_node{
     int nid;
     pf_dec_t kind;
     proc_dec_node_t *pdp;
@@ -54,6 +54,11 @@ struct _proc_dec_node{
     int nid;
     proc_head_node_t *pdp;
     proc_dec_node_t *next;
+};
+struct _proc_def_node {
+	int nid;
+	proc_head_node_t *php; //头部声明部分
+	block_node_t *bp;//主体部分
 };
 
 struct _proc_head_node{
