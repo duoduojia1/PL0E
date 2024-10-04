@@ -5,7 +5,7 @@ RM = rm -f
 EXE = pcc
 SRC = sources
 INC = include
-CFLAGS = -Wall -g
+CFLAGS = -Wall -g -Wno-unused-function -Wno-unused-variable
 SRCS = $(wildcard $(SRC)/*.c)
 OBJS = $(patsubst $(SRC)/%.c, $(SRC)/%.o, $(SRCS))
 
@@ -16,7 +16,7 @@ $(EXE): $(OBJS)
 	$(CC) -g -Wall -o $@ $^
 
 $(SRC)/%.o: $(SRC)/%.c
-	$(CC) -g -Wall -I$(INC) -c -o $@ $^
+	$(CC) $(CFLAGS) -I$(INC) -c -o $@ $^
 
 .depend: $(SRCS)
 	$(CC) -MM -I$(INC) $(SRCS) > .depend

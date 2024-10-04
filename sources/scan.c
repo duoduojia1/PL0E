@@ -39,7 +39,7 @@ static struct _pl0e_keywords_struct{
 	token_t tok;	
 }PL0E_KEYWORDS[]={
 	{"array",KW_ARRAY},
-	{"begin",KW_BGGIN},
+	{"begin",KW_BEGIN},
 	{"char",KW_CHAR},
 	{"const",KW_CONST},
 	{ "do", KW_DO },
@@ -99,6 +99,9 @@ token_t gettok(void){
 			else if(ch == '<'){
 				state = INLES;
 			}
+			else if(ch == '>'){
+				state = INGRE;
+			}
 			else if(ch == ':'){
 				state = INCOM;
 			}
@@ -152,7 +155,7 @@ token_t gettok(void){
 					curr = SS_LBRA;
 					break;
 				case ']':
-					curr = SS_RBBR;
+					curr = SS_RBRA;
 					break;
 				case '{': //不知道什么时候会跳到这里
 					curr = SS_LBBR;

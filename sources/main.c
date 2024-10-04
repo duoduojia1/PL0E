@@ -1,15 +1,7 @@
-#include "scan.h"
-extern int nidcnt;
-extern void match(token_t expected);
-
-
+#include "parse.h"
+#include "init.h"
 int main(){
-    source=fopen("/home/duoduo/PL01/Test/test.txt","r");
-    token_t tok = KW_PROCEDURE;
-    int z=3;
-    do{
-        match(tok);
-    }while(z--);
-    fclose(source);
+    source=fopen("/home/suzichuan/PL01/PL0E/sources/test.txt","r");
+    pgm_node_t *pgm = parse();
     return 0;
 }

@@ -52,7 +52,7 @@ struct _pf_dec_list_node{
 
 struct _proc_dec_node{
     int nid;
-    proc_head_node_t *pdp;
+    proc_def_node_t *pdp;
     proc_dec_node_t *next;
 };
 struct _proc_def_node {
@@ -110,7 +110,7 @@ struct _stmt_node{
 	write_stmt_node_t *wtp;
 };
 /*一种是普通赋值，一种是通过函数返回值赋值，一种是数组赋值*/
-typedef enum _assign_enum {NORM_ASSIGN, FUN_ASSIGN, ARRAY_ASSIGN } assign_t;
+typedef enum _assign_enum {NORM_ASSGIN, FUN_ASSIGN, ARRAY_ASSIGN } assign_t;
 
 struct _assign_stmt_node{
     int nid;
