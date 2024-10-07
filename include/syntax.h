@@ -2,6 +2,7 @@
 #define _SYNTAX_H_
 #include "parse.h"
 #include "limits.h"
+#include "symtab.h"
 /*program*/
 struct _pgm_node{
     int nid;
@@ -127,12 +128,14 @@ struct _if_stmt_node{
     stmt_node_t *tp;
     /*else*/
     stmt_node_t *ep;
+    symtab_t *stab; // *
 };
 
 struct _repe_stmt_node {
     int nid;
     stmt_node_t *sp; // 表达式
     cond_node_t *cp; //条件语句
+    symtab_t *stab; // *
 };
 
 typedef enum _for_enum { TO_FOR ,DOWNTO_FOR } for_t;
@@ -144,6 +147,7 @@ struct _for_stmt_node {
     expr_node_t *lep;
     expr_node_t *rep;
     stmt_node_t *sp; //类比for
+    symtab_t *stab;
 };
 
 struct _pcall_stmt_node {
@@ -156,6 +160,7 @@ struct _fcall_stmt_node {
     int nid;
     ident_node_t *idp;
     arg_list_node_t *alp;
+    symtab_t *stab;
 };
 
 struct _comp_stmt_node {
@@ -177,6 +182,7 @@ struct _write_stmt_node {
     write_t type;
     char sp[MAXSTRLEN];
     expr_node_t *ep;
+    symtab_t *stab;
 };
 
 
@@ -192,6 +198,7 @@ struct _expr_node {
     addop_t kind;
     term_node_t *tp;
     expr_node_t *next;
+    symtab_t *stab;
 };
 
 typedef enum multop_enum { NOP_MULTOP, MULT_MULTOP, DIV_MULTOP} multop_t;
@@ -201,6 +208,7 @@ struct _term_node {
     multop_t kind;
     factor_node_t *fp;
     term_node_t *next;
+    symtab_t *stab;
 };
 
 typedef enum _factor_enum {
@@ -219,6 +227,7 @@ struct _factor_node {
     expr_node_t *ep;
     int value;
     fcall_stmt_node_t *fcsp;
+    symtab_t *stab;
 };
 
 typedef enum _rela_enum {
@@ -235,6 +244,7 @@ struct _cond_node {
     expr_node_t *lep;
     rela_t kind;
     expr_node_t *rep;
+    symtab_t *stab;
 };
 
 typedef enum _ident_enum {
