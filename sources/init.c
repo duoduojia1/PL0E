@@ -1,3 +1,4 @@
 #include "init.h"
-bool echo=false;
-FILE *source=NULL;
+bool echo = false;
+bool silent = false;
+FILE *source = NULL;

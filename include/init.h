@@ -3,5 +3,6 @@
 #include <stdbool.h>
 #include <stdio.h>
 extern bool echo;
+extern bool silent;
 extern FILE *source;
 #endif

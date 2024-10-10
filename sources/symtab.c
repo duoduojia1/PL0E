@@ -5,6 +5,7 @@
 #include "debug.h"
 #include "syntax.h"
 #include "util.h"
+#include "init.h"
 symtab_t *top = NULL;
 
 int depth = 0;
@@ -215,8 +216,32 @@ syment_t *symalloc(symtab_t *stab, char *name, cate_t cate, type_t type){
     putsym(stab, e);
     return e;
 }
+void stabdump(){
+    msg("DUMP SYMBOL TABEL:\n");
+    symtab_t *t;
+    for(t = top; t; t=t->outer){
+        dumptab(t);
+    }
+    printf("\n");
+}
 
 
+static void dumptab(symtab_t *stab){
+    char ident[MAXSTRBUF] = "\0";
+    for(int i = 0;i < stab->depth; i++) {
+        strcat(ident, "  "); 
+    }
+    symtab_t *t = stab;
+    msg("%s stab(tid = %d): depth = %d, nspace = %s \n",ident, t->tid, t->depth, t->nspace);
+    strcat(ident, " ");
+    for(int i = 0; i< MAXBUCKETS ;i++) {
+        syment_t *hair, *e;
+        hair = &t->buckets[i];
+        for( e = hair->next; e; e = e->next){
+            msg("%s sid = %d, name = %s, cate = %d, type = %d, value = %d, label = %s\n", ident, e->sid, e->name, e->cate, e->type, e->initval, e->label);
+        } 
+    }
+}
 
 
 

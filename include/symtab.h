@@ -95,8 +95,8 @@ syment_t *symget(char *name);
 syment_t *symget2(symtab_t *stab, char *name);
 syment_t *symfind(char *name);
 
-//void stabdump();
-
+void stabdump();
+static void dumptab(symtab_t *stab);
 syment_t *syminit(ident_node_t *idp);
 syment_t *syminit2(symtab_t *stab, ident_node_t *idp, char *key);
 syment_t *symalloc(symtab_t *stab, char *name, cate_t cate, type_t type);
